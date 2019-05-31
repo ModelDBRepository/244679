@@ -1,0 +1,13 @@
+load_file("nrngui.hoc")
+load_file("purkinje.hoc")
+load_file("runh.hoc")
+xopen("graphs.ses")
+
+// the following brings the graphs into view
+{Graph[0].exec_menu("View = plot")}
+{Graph[1].exec_menu("View = plot")}
+{Graph[2].exec_menu("View = plot")}
+{Graph[3].exec_menu("View = plot")}
+{Graph[4].exec_menu("View = plot")}
+
+

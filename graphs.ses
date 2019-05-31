@@ -1,0 +1,177 @@
+objref InjectMatrix
+
+objref InjectFile,  voltage
+InjectFile = new File("c6v1.dat")
+InjectFile.ropen()
+
+InjectMatrix = new Matrix()
+InjectMatrix.scanf(InjectFile,100,2)
+voltage = new Vector(100)
+for(i=0; i<voltage.size; i = i+1){
+	if(i>=InjectMatrix.nrow){
+		voltage.x[i] = voltage.x[i-1]
+	}else{
+		voltage.x[i]=InjectMatrix.x[i][1]
+	}
+}
+
+
+objref InjectMatrix1
+
+objref InjectFile1,  signal
+InjectFile1 = new File("c6f1.dat")
+InjectFile1.ropen()
+
+InjectMatrix1 = new Matrix()
+InjectMatrix1.scanf(InjectFile1,100,2)
+signal = new Vector(100)
+for(i=0; i<signal.size; i = i+1){
+	if(i>=InjectMatrix1.nrow){
+		signal.x[i] = signal.x[i-1]/0.9
+	}else{
+		signal.x[i]=InjectMatrix1.x[i][1]/0.9
+	}
+}
+
+objref InjectMatrix2
+
+objref InjectFile2,  voltage2
+InjectFile2 = new File("c6v2.dat")
+InjectFile2.ropen()
+
+InjectMatrix2 = new Matrix()
+InjectMatrix2.scanf(InjectFile2,100,2)
+voltage2 = new Vector(100)
+for(i=0; i<voltage2.size; i = i+1){
+	if(i>=InjectMatrix2.nrow){
+		voltage2.x[i] = voltage2.x[i-1]
+	}else{
+		voltage2.x[i]=InjectMatrix2.x[i][1]
+	}
+}
+
+objref InjectMatrix3
+
+objref InjectFile3,  voltage3
+InjectFile3 = new File("c6v3.dat")
+InjectFile3.ropen()
+
+InjectMatrix3 = new Matrix()
+InjectMatrix3.scanf(InjectFile3,100,2)
+voltage3 = new Vector(100)
+for(i=0; i<voltage3.size; i = i+1){
+	if(i>=InjectMatrix3.nrow){
+		voltage3.x[i] = voltage3.x[i-1]+5
+	}else{
+		voltage3.x[i]=InjectMatrix3.x[i][1]+5
+	}
+}
+
+
+objref InjectMatrix12
+
+objref InjectFile12,  signal2
+InjectFile12 = new File("c6f2.dat")
+InjectFile12.ropen()
+
+InjectMatrix12 = new Matrix()
+InjectMatrix12.scanf(InjectFile12,100,2)
+signal2 = new Vector(100)
+for(i=0; i<signal2.size; i = i+1){
+	if(i>=InjectMatrix12.nrow){
+		signal2.x[i] = signal2.x[i-1]/0.9
+	}else{
+		signal2.x[i]=InjectMatrix12.x[i][1]/0.9
+	}
+}
+
+
+
+
+objref InjectMatrix13
+
+objref InjectFile13,  signal3
+InjectFile13 = new File("c6f3.dat")
+InjectFile13.ropen()
+
+InjectMatrix13 = new Matrix()
+InjectMatrix13.scanf(InjectFile13,100,2)
+signal3 = new Vector(100)
+for(i=0; i<signal3.size; i = i+1){
+	if(i>=InjectMatrix13.nrow){
+		signal3.x[i] = signal3.x[i-1]/0.9
+	}else{
+		signal3.x[i]=InjectMatrix13.x[i][1]/0.9
+	}
+}
+//plot the curves
+
+objectvar save_window_, gObj
+//the Display Window
+{
+ gObj= new VBox()
+ gObj.intercept(1)
+ save_window_ = new Graph(0)
+ save_window_.size(0,tstop,-100,0)
+ save_window_.view(0,-100,tstop,0, 780,0,465, 250)
+ graphList[0].append(save_window_)
+ save_window_.addexpr("v(.5)", 1, 1)
+ voltage.plot(save_window_, .2,2,1)
+ voltage2.plot(save_window_, .2,4,1)
+ voltage3.plot(save_window_, .2,3,1)
+
+
+
+ save_window_ = new Graph(0)
+ save_window_.size(0,tstop,0,0.05)
+ save_window_.view(0,0,tstop,0.07, 780,0, 465, 250)
+ graphList[2].append(save_window_)
+ save_window_.addexpr("BTC_ca_cdp5( 0.5 )-BTCnull_cdp5/(1+(b2_cdp5/(b1_cdp5*45e-6)))", 1,1)
+ signal.plot(save_window_, .2,2,1)
+ signal2.plot(save_window_, .2,4,1)
+ signal3.plot(save_window_, .2,3,1)
+
+ save_window_ = new Graph(0)
+ save_window_.size(0,tstop,0,0.05)
+ save_window_.view(0,0,tstop,0.07, 780,0, 465, 250)
+ graphList[2].append(save_window_)
+ save_window_.addexpr("ica( 0.5 )", 2,1)
+ gObj.intercept(0)
+ gObj.map("Graphs",780,0,0,0)
+}
+
+objectvar save_window_1, gObj1
+//the Display Window
+{
+
+ gObj1= new VBox()
+ 
+ gObj1.intercept(1)
+ save_window_1= new Graph(0)
+ save_window_1.size(0,tstop,-1,1)
+ save_window_1.view(0,-1,tstop,2, 1440,800, 265, 250)
+ graphList[0].append(save_window_1)
+ save_window_1.addexpr("ica_CaT3_1( 0.5 )", 2,1)
+ save_window_1.addexpr("ica_newCaP1( 0.5 )", 1,1)
+save_window_1.addexpr("ik_KA1( 0.5 )", 3,1)
+save_window_1.addexpr("ik_KC3( 0.5 )", 4,1)
+save_window_1.addexpr("ik_Kdr1( 0.5 )", 5,1)
+save_window_1.addexpr("ik_SK2( 0.5 )", 6,1)
+
+
+ save_window_1= new Graph(0)
+ save_window_1.size(0,tstop,0,1)
+ save_window_1.view(0,0,tstop,1, 1440,800, 265, 250)
+ graphList[1].append(save_window_1)
+ save_window_1.addexpr("i_climbing( 0.5 )", 1,1)
+
+ gObj1.intercept(0)
+ 
+ gObj1.map("Graphs",1440,0,0,0)
+}
+
+objectvar save_window_2, gObj2
+//the Display Window
+
+{doNotify()}
+run()

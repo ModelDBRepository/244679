@@ -1,0 +1,138 @@
+
+{
+xpanel("RunControl", 0)
+v_init = -87
+xvalue("Init","v_init", 1,"stdinit()", 1, 1 )
+xbutton("Init & Run","run()")
+xbutton("Stop","stoprun=1")
+runStopAt = 20
+xvalue("Continue til","runStopAt", 1,"{continuerun(runStopAt) stoprun=1}", 1, 1 )
+t = 20
+xvalue("t","t", 2 )
+tstop = 20
+xvalue("Tstop","tstop", 1,"tstop_changed()", 0, 1 )
+dt = 0.002
+xvalue("dt","dt", 1,"setdt()", 0, 1 )
+steps_per_ms = 5
+xvalue("Points plotted/ms","steps_per_ms", 1,"setdt()", 0, 1 )
+realtime = 0.19
+xvalue("Real Time","realtime", 0,"", 0, 1 )
+xlabel(" ")
+xlabel("CF Current")
+g_climbing = 0.002
+xvalue("Ampl","g_climbing", 1,"", 0, 0 )
+icin_climbing = 0.044
+xvalue("Initial","icin_climbing", 1,"", 0, 0 )
+del_climbing = 2.2
+xvalue("Delay","del_climbing", 1,"", 0, 0 )
+e_climbing = -200
+xvalue("A","e_climbing", 1,"", 0, 0 )
+tauC_climbing = 3
+xvalue("dur","tauC_climbing", 1,"", 0, 0 )
+tauO_climbing = 1.4
+xvalue("rise","tauO_climbing", 1,"", 0, 0 )
+delf_climbing = 2
+xvalue("Delayf","delf_climbing", 1,"", 0, 0 )
+ef_climbing = -150
+xvalue("Af","ef_climbing", 1,"", 0, 0 )
+tauCf_climbing = 6
+xvalue("durf","tauCf_climbing", 1,"", 0, 0 )
+tauOf_climbing = 5
+xvalue("risef","tauOf_climbing", 1,"", 0, 0 )
+fastfact_climbing = 0
+xvalue("fact","fastfact_climbing", 1,"", 0, 0 )
+xlabel(" ")
+xlabel("Buffer")
+Buffnull2_cdp5 = 0
+xvalue("Total","Buffnull2_cdp5", 1,"", 0, 0 )
+rf3_cdp5 = 0.14352
+xvalue("k1","rf3_cdp5", 1,"", 0, 0 )
+rf4_cdp5 = 0.0013626
+xvalue("k2","rf4_cdp5", 1,"", 0, 0 )
+xpanel(512,54)
+}
+{
+xpanel("Buffers", 0)
+BTCnull_cdp5 = 1
+xvalue("Dye","BTCnull_cdp5", 1,"", 0, 0 )
+b1_cdp5 = 570
+xvalue("Dye-Kon","b1_cdp5", 1,"", 0, 0 )
+b2_cdp5 = 5.7
+xvalue("Dye-Koff","b2_cdp5", 1,"", 0, 0 )
+DMNPEnull_cdp5 = 0.75
+xvalue("Imobile","DMNPEnull_cdp5", 1,"", 0, 0 )
+c1_cdp5 = 570
+xvalue("Imob-Kon","c1_cdp5", 1,"", 0, 0 )
+c2_cdp5 = 4
+xvalue("Imob-Koff","c2_cdp5", 1,"", 0, 0 )
+CBnull_cdp5 = 0.6
+xvalue("Calbindin","CBnull_cdp5", 1,"", 0, 0 )
+nf1_cdp5 = 217.5
+xvalue("CBf-Kon","nf1_cdp5", 1,"", 0, 0 )
+nf2_cdp5 = 0.0358
+xvalue("CBf-Koff","nf2_cdp5", 1,"", 0, 0 )
+ns1_cdp5 = 27.5
+xvalue("CBs-Kon","ns1_cdp5", 1,"", 0, 0 )
+ns2_cdp5 = 0.0026
+xvalue("CBs-Koff","ns2_cdp5", 1,"", 0, 0 )
+PVnull_cdp5 = 0.075
+xvalue("Parvalbumin","PVnull_cdp5", 1,"", 0, 0 )
+m1_cdp5 = 535
+xvalue("PVca-Kon","m1_cdp5", 1,"", 0, 0 )
+m2_cdp5 = 0.00095
+xvalue("PVca-Koff","m2_cdp5", 1,"", 0, 0 )
+p1_cdp5 = 4
+xvalue("PVmg-Kon","p1_cdp5", 1,"", 0, 0 )
+p2_cdp5 = 0.025
+xvalue("PVmg-Koff","p2_cdp5", 1,"", 0, 0 )
+xpanel(48,870)
+}
+{
+xpanel("(Parameters)", 0)
+gbar_leak = 0.002
+xvalue("leak","gbar_leak", 1,"", 0, 0 )
+pcabar_CaT3_1 = 0.00015
+xvalue("Tm","pcabar_CaT3_1", 1,"", 0, 0 )
+t1_CaT3_1 = 0.3
+xvalue("t1","t1_CaT3_1", 1,"", 0, 0 )
+t2_CaT3_1 = 53
+xvalue("t2","t2_CaT3_1", 1,"", 0, 0 )
+xlabel("A")
+gkbar_KA1 = 0.07
+xvalue("A","gkbar_KA1", 1,"", 0, 0 )
+vm1_KA1 = 50
+xvalue("left","vm1_KA1", 1,"", 0, 0 )
+vm2_KA1 = 30
+xvalue("up","vm2_KA1", 1,"", 0, 0 )
+t1_KA1 = 0.2
+xvalue("t1","t1_KA1", 1,"", 0, 0 )
+t2_KA1 = 50
+xvalue("t2","t2_KA1", 1,"", 0, 0 )
+pcabar_newCaP1 = 0.00075
+xvalue("PQm","pcabar_newCaP1", 1,"", 0, 0 )
+pp_newCaP1 = 0.6
+xvalue("t","pp_newCaP1", 1,"", 0, 0 )
+t1_newCaP1 = 0.1
+xvalue("c1","t1_newCaP1", 1,"", 0, 0 )
+t2_newCaP1 = 50
+xvalue("c2","t2_newCaP1", 1,"", 0, 0 )
+xlabel("Kdr")
+gkbar_Kdr1 = 0.032
+xvalue("Kdr","gkbar_Kdr1", 1,"", 0, 0 )
+pp_Kdr1 = 18
+xvalue("t1","pp_Kdr1", 1,"", 0, 0 )
+pdr_Kdr1 = 1
+xvalue("t2","pdr_Kdr1", 1,"", 0, 0 )
+vsh1_Kdr1 = 0
+xvalue("vact","vsh1_Kdr1", 1,"", 0, 0 )
+vsh2_Kdr1 = 0
+xvalue("vinact","vsh2_Kdr1", 1,"", 0, 0 )
+hdr_Kdr1 = 1
+xvalue("tinact","hdr_Kdr1", 1,"", 0, 0 )
+xlabel("K-Ca")
+gkbar_KC3 = 2.500
+xvalue("BK","gkbar_KC3", 1,"", 0, 0 )
+gkbar_SK2 = 0.03
+xvalue("SK","gkbar_SK2", 1,"", 0, 0 )
+xpanel(156,126)
+}

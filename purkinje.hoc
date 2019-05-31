@@ -1,0 +1,113 @@
+load_file("nrngui.hoc")
+
+create  dend
+access dend
+
+
+ nseg = 1
+ L = 20
+ diam = 4
+ cm=1.5
+
+
+   insert climbing
+       del_climbing=2 
+       g_climbing = 0.002 
+       icin_climbing=-0.016 
+       e_climbing=-74
+       tauC_climbing=10 
+       tauO_climbing=0.4 
+       delf_climbing=2 
+       ef_climbing=-74
+       tauCf_climbing=10 
+       tauOf_climbing=10 
+       fastfact_climbing=0
+       
+
+   insert leak
+       gbar_leak =9e-5
+   
+
+     
+   insert CaT3_1
+       pcabar_CaT3_1=0.000 
+       t1_CaT3_1=0.6
+        t2_CaT3_1=55 
+
+
+      insert KA1
+       gkbar_KA1=0.03 
+       vh1_KA1=50 
+       vm1_KA1=27 
+       vm2_KA1=30 
+
+
+
+     insert newCaP1
+       pcabar_newCaP1=0.000 
+       pp_newCaP1=0.75
+
+       
+
+  
+   insert Kdr1
+     gkbar_Kdr1=0.092
+     pp_Kdr1=8
+     pdr_Kdr1=0.4
+     vsh1_Kdr1=0
+     vsh2_Kdr1=0
+     hdr_Kdr1=1
+
+   
+   insert KC3
+       gkbar_KC3=4.800
+       tin_KC3=4
+
+    insert SK2
+       gkbar_SK2 =0.005   
+
+
+   insert cdp5
+        Nannuli_cdp5 = 0.326 + (1.94 * diam ) + (0.289*diam *diam ) - ((3.33e-2)*diam *diam *diam ) + ((1.55e-3)*diam *diam *diam *diam ) - (2.55e-5*diam *diam *diam *diam *diam )
+        Buffnull2_cdp5  = 64.2 - 57.3*exp(-diam /1.4)
+        rf3_cdp5  = 0.162 - 0.106*exp(-diam /2.29)
+        if (diam >=2) {
+                rf4_cdp5  = 0.000267 + 0.0167*exp(-diam /0.722) + 0.0028*exp(-diam /4)
+        } else {
+                rf4_cdp5  = 0.003
+        }
+
+
+//Pump
+     kpmp1_cdp5    = 3e-3       
+     kpmp2_cdp5   = 1.75e-5   
+     kpmp3_cdp5   = 7.255e-5  
+     TotalPump_cdp5 = 1e-9    
+
+    //Dye Fura-ff
+     BTCnull_cdp5 =1     
+     b1_cdp5 =570   
+     b2_cdp5 = 3.5 
+
+    //Buffer
+     DMNPEnull_cdp5=0.75
+     c1_cdp5=570
+     c2_cdp5=4
+
+    //Calbindin
+     CBnull_cdp5=0.16
+     nf1_cdp5=43.5
+     nf2_cdp5=3.58e-2
+     ns1_cdp5=5.5
+     ns2_cdp5=0.26e-2
+
+    //Parvalbumin
+     PVnull_cdp5=0.075
+     m1_cdp5=107
+     m2_cdp5=9.5e-4
+     p1_cdp5=0.8
+     p2_cdp5=2.5e-2
+
+global_ra = 250
+set_ra()
+celsius=37
